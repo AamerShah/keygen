@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"/>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+	</head>
+
+<body> 
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+		</div>
+	</nav>
+	<div class="col-md-3"></div>
+	<div class="col-md-6 well">
+		<h3 class="text-primary">Javascript - Random Password Generator</h3>
+		<hr style="border-top:1px dotted #ccc;"/>
+		<div class="col-md-1"></div>
+		<div class="col-md-10">
+			<form class="form-inline">
+				<input type="text" id="plength" value="8" class="form-control" size="2"/> <label>Password Length</label><hr />
+				<input type="text" id="chr" Value="qwertyuiopasdfghjklzxcvbnm1234567890"  onChange="UpdateInfo();" class="form-control"/> <label>Character Set</label><hr />
+				<input type="text" id="password" placeholder="No Password Generated" class="form-control" readonly = "readonly"/>
+				<br /><br />
+				<center><button type="button" class="btn btn-primary" onClick="GetPassword()"><span class="glyphicon glyphicon-random"></span> Generate</button>
+				<button type="button" class="btn btn-primary" onClick="Copy()" disabled>Copy</button></center>
+			</form>
+		</div>
+	</div>
+
+<script>var keys = document.getElementById('chr').value;
+var password = '';
+function UpdateInfo()
+    {keys = document.getElementById('chr').value;}
+function GetPassword(){
+	var plength = document.getElementById('plength').value;
+	document.getElementById('password').value = GeneratePassword(plength);
+}
+function GeneratePassword(plength){
+	password='';
+		for(i=0; i<plength; i++){
+			password+=keys.charAt(Math.floor(Math.random()*keys.length));
+		}
+	return password;
+}</script>
+</body>
+</html>
